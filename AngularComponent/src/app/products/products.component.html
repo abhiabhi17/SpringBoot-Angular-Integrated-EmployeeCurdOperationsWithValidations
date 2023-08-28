@@ -1,0 +1,44 @@
+<html>
+    <head>
+        <title>Bootstrap Example</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+      </head>
+
+<div *ngFor="let item of [1,3,5]" >
+
+    <p>number is {{item}}</p>
+</div>
+<div *ngFor="let item of [1,2,3,4,5]">
+    <p>number is {{item}}</p>
+</div>
+<div *ngFor ="let e of employees" [ngStyle]="{'background-color':'green'}" >
+  
+   <ng-template #abc>
+       <button class="btn btn-danger">FirstName</button>
+    </ng-template>
+    <ng-template #xyz>
+      <button class="btn btn-success">Email</button>
+    </ng-template>
+  
+    <table class="table table-striped">
+        <thead>
+            <tr>
+              <th *ngIf="e.name==='firstName';else abc" >Firstname</th>
+              <th *ngIf="e.name==='firstName';else xyz">Email</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr >
+              <td>{{e.name}}</td>
+              <td>{{e.email}}</td>
+            </tr>
+            
+            
+          </tbody>
+    </table>
+</div>
+</html>

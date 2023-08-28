@@ -1,0 +1,54 @@
+<div>
+    <app-course-search></app-course-search>
+    <!--<app-course-search (searchTextChanged)="onSearchTextEntered($event)"></app-course-search>-->
+    <app-filter [all]="getTotalCourses()"
+                [free]="getTotalFreeCourses()"
+                [premium]="getTotalPremiumCourses()"
+                (filterRadioButtonSelectionChanged)="onFilterRadioButtonChanged($event)"></app-filter>
+</div>
+<!--<div class="course-container" *ngFor="let course of courses">
+
+<div class="course-name"><h4>{{course.name}}</h4></div>
+<div class="course-description"><h4>{{course.description}}</h4></div>
+<div class="details">
+<div class="course-type"><h4>{{course.type}}</h4></div>
+<div class="course-price"><h4>{{course.price}}</h4></div>
+</div>
+</div>-->
+<html>
+    <head>
+        <title>Bootstrap Example</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    </head>
+    <ng-container *ngFor="let course of courses">
+      <!--    *ngIf="searchText === '' || course.name.toLowerCase().includes(searchText)" -->
+      
+      <table class="table table-striped" *ngIf="courseCountRadioButton ==='All'|| courseCountRadioButton === course.type" >
+        <thead>
+            <tr>
+              <th >Name</th>
+              <th>Author</th>
+              <th >Description</th>
+              <th >Type</th>
+              <th >Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr >
+              <td>{{course.name}}</td>
+              <td>{{course.author}}</td>
+              <td>{{course.description}}</td>
+              <td>{{course.type}}</td>
+              <td>{{course.price}}</td>
+            </tr>
+            
+            
+          </tbody>
+    </table>
+    </ng-container>
+
+</html>
