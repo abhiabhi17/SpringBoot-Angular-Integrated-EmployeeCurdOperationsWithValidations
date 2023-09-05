@@ -1,0 +1,39 @@
+<div >
+    <h1 *ngIf="!editMode">{{course.name}}</h1>
+</div>
+<div style="text-align:center" *ngIf="editMode">
+    <input type="text" [(ngModel)]="course.name">
+</div>
+<div class="course-container" >
+    <table class="table" >
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Author</th>
+          <th>Duration</th>
+          <th>Type</th>
+          <th>Price</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{course.name}}</td>
+          <td>{{course.author}}</td>
+          <td>{{course.duration}}</td>
+          <td>{{course.type}}</td>
+          <td>{{course.price}}</td>
+          <td>{{course.description}}</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    </div>
+    <div>
+        <!-- <button  [routerLink]="['/Courses/Course',course.id]"[queryParams]="{edit:true,value:'course'}">Edit</button> -->
+    
+    <button (click)="appendQueryParam()">Edit</button>
+    <button (click)="editMode=false" [routerLink]="['/Courses/Course',course.id]">Update</button>
+     <!-- After clcik on update http://localhost:61976/Courses/Course/102 -->
+    
+    </div>
