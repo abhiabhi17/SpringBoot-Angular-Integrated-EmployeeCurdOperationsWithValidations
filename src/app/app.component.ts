@@ -68,14 +68,17 @@ this.form.setValue({
    //populate the form with employe id
    this.form.setValue(
     {
-      firstName:currentEmployee.firstName,
+      firstName:currentEmployee.firstName, // reset the values after clicking submit
       lastName:currentEmployee.lastName,
       email:currentEmployee.email,
     }
    )
-   this.editMode=true;
+   this.editMode=true;   // make edit mode is true
   }
 
+
+
+  //------------------- delete all employeess---------------------//
   deleteAllEmplpoyees()
   {
   this.empService.deleteAllEmplpoyees();
