@@ -1,3 +1,5 @@
+
+/* ng invalid and ng touched are ng properties of ngform if it is touced invalid border should be red */
 input.ng-invalid.ng-touched
 {
     border:red 1px solid;
