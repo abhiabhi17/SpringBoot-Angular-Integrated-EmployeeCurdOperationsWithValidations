@@ -1,7 +1,7 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { EmployeeModel } from "../model/employee.model";
 import { Injectable } from "@angular/core";
-import { map } from "rxjs";
+import { catchError, map, throwError } from "rxjs";
 
 @Injectable({
     providedIn: 'root'
@@ -18,7 +18,13 @@ export class EmployeeService
 //----------------------------------------Fetch employees from srping boot(Restapi curd operations)--------------//
     public fetchEmployees()
     {
-return this.http.get<{[key:string]:EmployeeModel}>('http://localhost:8080/api/employees/getAll')
+        const header=new HttpHeaders()
+        .set('content-type','application.json')
+        .set('Access-control-Allow-origin','*');//setting headers and params
+       
+        const params=new HttpParams().set('print','pretty');//params to print the json pretty in response header
+
+return this.http.get<{[key:string]:EmployeeModel}>('http://localhost:8080/api/employees/getAll',{'headers':header,params:params})
                  .pipe(map((res)=>{
                     const employees=[];
                     for(const key in res)
@@ -30,12 +36,19 @@ return this.http.get<{[key:string]:EmployeeModel}>('http://localhost:8080/api/em
                        
                     }
                     return employees;
+                 }),catchError((err)=>{
+                    return throwError(err);
                  }))
     }
 //----------------------------------------------------DELTE EMPLOYEE BY ID--------------------------//
     deleteEmployee(id:string)
     {
-        return this.http.delete('http://localhost:8080/api/employees/delete/'+id,{responseType:'text'});
+        // let header= new HttpHeaders();
+        // header=header.append('myHeader1','value1');
+        // header=header.append('myHeader2','Value2');//as headers are immutable we use let 
+        
+        return this.http.delete('http://localhost:8080/api/employees/delete/'+id,
+        {responseType:'text'});
     }
 
     //------------------------------UPDATE EMPLOYE BY ID AND EMPLOYEMODEL---------------------------------//

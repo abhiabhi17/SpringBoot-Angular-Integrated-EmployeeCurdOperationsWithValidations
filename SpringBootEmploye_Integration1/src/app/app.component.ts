@@ -1,14 +1,15 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { EmployeeModel } from './model/employee.model';
 import { EmployeeService } from './services/empservice';
+import { Subscription, catchError } from 'rxjs';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit,OnDestroy {
   ngOnInit(): void {
     throw new Error('Method not implemented.');
   }
@@ -22,9 +23,12 @@ export class AppComponent implements OnInit {
   currentEmployeeId:string;
   
   @ViewChild('empForm') form:NgForm ; // to access the empform n
-   allemployees:EmployeeModel[]=[];
+   allemployees:EmployeeModel[]=[]; // all employes for displaying employees in front ened
+   isFetching:boolean=false; // display loading mmeessage wile fetching
+   errorMessage:string|any; //to display error message to temaplate
+   errorSub:Subscription|any; // declareed  to unsubscrribe error messsaege
  constructor(private empService:EmployeeService){}
-
+  
  //-----------------------SAVE Employe with type EmpModel-----------------//
    saveEmployee(emp: EmployeeModel)
   {
@@ -44,10 +48,12 @@ this.form.setValue({  // reset the values
 
   getAllEmployees() {
     
+    this.isFetching=true;// loading starts with true
     this.empService.fetchEmployees()
     .subscribe((employees)=>{
        this.allemployees=employees;
-    })
+       this.isFetching=false;// loading ends with false
+    },(err)=>{this.errorMessage=err.message})//display error message to front end
   
   }
 //------------------- DELETE EMPLOYE BASED ON ID---------------//
@@ -55,7 +61,7 @@ this.form.setValue({  // reset the values
   {
     this.empService.deleteEmployee(id).subscribe((res)=>{
                console.log(res);
-    })
+    },(err)=>this.errorMessage=err.message)
   }
 
   //----------------------------EDIT EMPLOYEE-----------------//
@@ -82,4 +88,8 @@ this.form.setValue({  // reset the values
   this.empService.deleteAllEmplpoyees();
   }
   
+  ngOnDestroy(): void {
+  this.errorSub.unsubscrribe();// unsubscribe the error
+  }
+
 }
