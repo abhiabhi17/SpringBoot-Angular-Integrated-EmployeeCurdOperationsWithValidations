@@ -3,7 +3,11 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
+<<<<<<< HEAD
     "SpringBootEmploye_Integration1": {
+=======
+    "AngularRouting1": {
+>>>>>>> b7cb2553116fcf1b5473639c5fb6ac5a217720c1
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +17,11 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+<<<<<<< HEAD
             "outputPath": "dist/spring-boot-employe-integration1",
+=======
+            "outputPath": "dist/angular-routing1",
+>>>>>>> b7cb2553116fcf1b5473639c5fb6ac5a217720c1
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -60,10 +68,17 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
+<<<<<<< HEAD
               "browserTarget": "SpringBootEmploye_Integration1:build:production"
             },
             "development": {
               "browserTarget": "SpringBootEmploye_Integration1:build:development"
+=======
+              "browserTarget": "AngularRouting1:build:production"
+            },
+            "development": {
+              "browserTarget": "AngularRouting1:build:development"
+>>>>>>> b7cb2553116fcf1b5473639c5fb6ac5a217720c1
             }
           },
           "defaultConfiguration": "development"
@@ -71,7 +86,11 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
+<<<<<<< HEAD
             "browserTarget": "SpringBootEmploye_Integration1:build"
+=======
+            "browserTarget": "AngularRouting1:build"
+>>>>>>> b7cb2553116fcf1b5473639c5fb6ac5a217720c1
           }
         },
         "test": {

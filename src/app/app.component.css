@@ -1,7 +1,25 @@
+<<<<<<< HEAD
 input.ng-invalid.ng-touched
 {
     border:red 1px solid;
 }
 small{
     color:red;
+=======
+.spinner{
+    border: 16px solid silver;
+    border-top: 16px solid #bcbcbc;
+    border-radius: 50%;
+    width: 80px;
+    height:80px;
+    animation: spin 700ms linear infinite;
+    top:50%;
+    left:50%;
+    position: absolute;
+}
+@keyframes spin {
+    0%{ transform:rotate(0deg)}
+    100%{ transform: rotate(-360 deg);}
+    
+>>>>>>> b7cb2553116fcf1b5473639c5fb6ac5a217720c1
 }

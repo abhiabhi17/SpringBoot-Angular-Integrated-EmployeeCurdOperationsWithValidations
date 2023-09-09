@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # SpringBootEmployeIntegration1
+=======
+# AngularRouting1
+>>>>>>> b7cb2553116fcf1b5473639c5fb6ac5a217720c1
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.4.
 
